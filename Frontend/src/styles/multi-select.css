@@ -1,0 +1,72 @@
+.multi-select {
+  position: relative;
+  width: 250px;
+  font-family: sans-serif;
+}
+
+.multi-select label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 20px;
+}
+
+.multi-select-input {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 35px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.placeholder {
+  color: #aaa;
+}
+
+.selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 20px;
+}
+.arrow {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.options-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.option {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: #f0f0f0;
+}
+
+.option.selected {
+  background: #e6f0ff;
+}

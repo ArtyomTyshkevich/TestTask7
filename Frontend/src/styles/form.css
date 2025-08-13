@@ -1,0 +1,37 @@
+.form-group {
+
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 20px;
+  color: #333;
+}
+
+.form-group .input {
+  padding: 8px 12px;
+  font-size: 20px;
+  font-weight: 100;
+  width: 30%;
+  border: 1px solid #000000;    
+  border-radius: 4px;
+  outline-offset: 2px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-group .input:focus {
+  border-color: #1976d2;
+  box-shadow: 0 0 3px rgba(25, 118, 210, 0.5);
+}
+
+.form-group .input:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}

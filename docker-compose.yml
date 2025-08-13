@@ -1,0 +1,63 @@
+version: '3.4'
+
+networks:
+  backend:
+    driver: bridge
+  frontend:
+    driver: bridge
+
+services:
+  testtask.api:
+    build:
+      context: ./Backend
+      dockerfile: TestTask/Dockerfile
+    container_name: testtask-api  
+    image: testtask-api:latest
+    networks:
+      - backend
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=db;Database=Task4311;User Id=sa;Password=password@12345#;TrustServerCertificate=True;
+    depends_on:
+      - db
+    ports:
+      - "8003:80"
+      - "8083:443"
+    restart: unless-stopped
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: testtask-db
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=password@12345#
+      - MSSQL_PID=Express
+      - MSSQL_MEMORY_LIMIT_MB=1410
+    networks:
+      - backend
+    ports:
+      - "8007:1433"
+    volumes:
+      - sql_data:/var/opt/mssql
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: testtask-frontend
+    image: testtask-frontend:latest
+    networks:
+      - frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - testtask.api
+    restart: unless-stopped
+
+volumes:
+  sql_data:

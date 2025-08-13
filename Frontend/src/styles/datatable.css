@@ -1,0 +1,25 @@
+.data-table-container {
+  overflow-x: auto;
+}
+
+.data-table {
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #000000;
+  padding-left: 4px;
+  padding-right: 10px;
+  white-space: nowrap;
+  font-size: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.data-table th {
+  background-color: #cdcdcd;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: left;
+}
